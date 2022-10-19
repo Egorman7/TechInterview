@@ -105,22 +105,9 @@ class TvShowsAdapter : RecyclerView.Adapter<TvShowsAdapter.ViewHolder>() {
             Glide.with(binding.itemImage)
                 .load(item.imageUrl)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.drawable.img_placeholder)
                 .transform(RoundedCorners(itemView.context.resources.getDimensionPixelSize((R.dimen.image_corners))))
                 .into(binding.itemImage)
-        }
-    }
-
-    class DiffUtilCallback : DiffUtil.ItemCallback<TVShow>() {
-        override fun areItemsTheSame(oldItem: TVShow, newItem: TVShow): Boolean {
-            return oldItem.id == newItem.id
-        }
-
-        override fun areContentsTheSame(oldItem: TVShow, newItem: TVShow): Boolean {
-            return oldItem.imageUrl == newItem.imageUrl &&
-                    oldItem.endTime == newItem.endTime &&
-                    oldItem.startTime == newItem.startTime &&
-                    oldItem.title == newItem.title &&
-                    oldItem.episodeTitle == newItem.episodeTitle
         }
     }
 }

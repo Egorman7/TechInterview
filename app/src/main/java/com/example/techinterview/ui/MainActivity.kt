@@ -31,10 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.mainRecycler.adapter = adapter
         binding.mainSwipeRefresh.setOnRefreshListener {
-            if(!binding.mainSwipeRefresh.isRefreshing){
-                binding.mainSwipeRefresh.isRefreshing = true
-                viewModel.load()
-            }
+            viewModel.load()
         }
 
         with(binding.mainSorting){
